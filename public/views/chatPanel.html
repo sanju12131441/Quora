@@ -1,0 +1,56 @@
+<div ng-init = "single.username()" style="  background-image: url('../img/header-bg.jpg');">
+	<div class="container">
+		<div class="row">
+		    <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8 text">
+		        <div id="info">
+		        	<br>	<br>	<br>	<br>	<br>
+		        	<p style="font-size: 16px;color:#fed136; "><mark>Details of your Query:</mark></p>
+								<p style="color: #f46b42;">
+		        		Title: {{single.title}} <br>
+								Details: {{single.mDeatils}}<br></p>
+		        	</div>
+		        	<br>
+		        	<div id="btnChangeStatus">
+		        		<button class="btn btn-primary btn-sm" ng-click = "single.openclose()">{{single.getStatus()}}</button>
+
+
+								<a href="#" class="btn btn-danger text-center" title="Previous Page" onclick="history.go(-1);event.preventDefault();">Go Back</a>
+		        	</div>
+		        </div>
+		    </div>
+			<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8 text" >
+				<div id="messages" >
+					<ul ng-repeat="message in single.messages">
+						<li  ng-class = "{'message':{{message.sender !== 'Admin'}} , 'messageadmin': {{message.sender === 'Admin'}} }" id="scrollB">
+							<div class="row" >
+								<div class="msgtext" style="font-size: 16px;color:#e5123c; ">{{message.queryText}} </div>
+								<div class="datetime" style="font-size: 16px;color:#e5123c; ">{{message.createdAt | date: 'short'}}</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<form name="chatform" ng-submit="single.createMessage()">
+				<div class="container">
+					<div  id="form">
+						<div class="col-lg-offset-2 col-lg-6 col-md-offset-2 col-md-6 col-sm-offset-2 col-sm-6 col-xs-offset-2 col-xs-6 text text-center" >
+						<label>Chatter box:</label><br>
+							<textarea id="chattext" style="height: 50%;width: 40%;" 	 type="text" name="queryText" ng-model="single.queryText" placeholder="Answer the above Query"></textarea>
+					
+						
+						
+							<input class="btn-primary btn-sm" type="submit" name="send" value="send">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript">// <![CDATA[
+function goBack() {
+       window.history.back();
+       return false;
+                }
+// ]]></script>

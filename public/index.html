@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Quora">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title ng-controller="homeCtrl as home">Quora:your freind</title>
+  <meta name="description" content="A Single page MEAN stack application for Ticket based query support system with NodeJS Backend">
+    <meta name="author" content="">
+     <!-- favicon icon -->
+  <link rel="shortcut icon" type="image/png" href="/favicon.icon"/>
+   <!-- css files -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/imagehover.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="/css/agency.css">
+    <link rel="stylesheet" type="text/css" href="css/agency.min.css">
+</head>
+
+ <!--The main part begins-->
+
+<body ng-class="{'modal-open': (index.logged()===0), 'nomodal': !(index.logged()===0)}">
+  <!--Navbar-->
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top" ng-controller='indexCtrl as index'>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand"  style="color:#308e70;size: 20px;font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;  ><i class="fa fa-quora" aria-hidden="true" style="color:#fed136;"></i> Quora</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li ><a href="https://www.facebook.com" target="_blank"  style=" color:#308e70;size: 20px;background-color: #fed136;"><i class="fa fa-grav" aria-hidden="true"></i>    About me</a></li>
+           <li ><a href="/#/contact" target="_blank" style="color:#308e70;size: 20px;background-color:#fed136;" ><i class="fa fa-volume-control-phone" aria-hidden="true"></i>   Contact</a></li>
+        
+          <!-- visible when not logged in -->
+          <li  ng-model="index.logged" ng-if="index.logged()===0" data-toggle="modal" data-target="#loginModal"><a>Login/Sign Up</a></li>
+          <!-- visible when logged in -->
+          <button type="button" ng-if="index.logged() === 1" style="margin:7px" class="btn btn-logged btn-primary dropdown-toggle" ng-init="index.getName()" id="logout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><i class="fa fa-user-o" aria-hidden="true"></i>
+    {{index.user}}  <span class="caret"></span></button>
+       
+          <ul ng-if="index.logged() === 1" class="dropdown-menu">
+     
+
+            <li><a ng-click="index.logout()" style="color:#fed136;size: 10px;">Logout</a></li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container-fluid" id="view">
+    <div class="row">
+      <div class="wrapper ng-scope" ng-view ng-autoscroll="true">
+      </div>
+    </div>
+  </div>
+
+ <!-- footer -->
+ 
+  <footer id="footer" class="footer" style="background-image:url(https://s-media-cache-ak0.pinimg.com/originals/b3/fc/78/b3fc782c37bdb1d2561564fc28a07e4d.jpg);">
+    <div class="container text-center">
+
+      <p style="color: #139359;font-size: 3em;">Quora:A freind you must have</p>
+
+      
+      <div class="col-md-3">
+                    <span class="copyright" style="color: #139359 ;">Copyright &copy; Quora 2016-2017</span>
+                </div>
+                <div class="col-md-4" ">
+                    <ul class="list-inline social-buttons" style="size: 10px">
+                        <li><a href="https://www.twitter.com"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks" ">
+                        <li><a href="/#/" style="color:  #139359" >Privacy Policy </a>
+                        </li>
+                        <li><a href="/#/" style="color:  #139359">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+  
+    </div>
+  </footer>
+   <!-- Jquery files-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+
+  <!-- AngularJS Modules -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+ 
+
+  <!-- angular scipts -->
+  <script type="text/javascript" src="angular/app.js"></script>
+  <script type="text/javascript" src="angular/routes/routes.js"></script>
+
+
+  <!-- ng Services -->
+  <script type="text/javascript" src="angular/services/queryService.js"></script>
+  <script type="text/javascript" src="angular/services/authService.js"></script>
+  <script type="text/javascript" src="angular/services/authInterceptorService.js"></script>
+ 
+  <!-- ng controllers -->
+  <script type="text/javascript" src="angular/controllers/home.js"></script>
+  <script type="text/javascript" src="angular/controllers/index.js"></script>
+  <script type="text/javascript" src="angular/controllers/create.js"></script>
+  <script type="text/javascript" src="angular/controllers/single.js"></script>
+  <script type="text/javascript" src="angular/controllers/dash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

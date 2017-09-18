@@ -1,0 +1,93 @@
+<section class="dashboardcontainer text-center">
+	 <!-- heading section -->
+   <p style="color: white;font-size: 1.3em;">   <mark>Welcome to Quora</mark> <br> <br>We hope you are here to post some queries. <br>you can answer queries and you will also get replies from our team.</p> 
+  <br>
+  <br>
+  <div ng-if="dashboard.user !== 'Admin'">
+    <a href="#/create/{{dashboard.userId}}" class="btn " style="padding-left: 6%;padding-right: 6%;background-color:#139359 ; color: #d3e2db"><i class="fa fa-plus" aria-hidden="true"></i>          Create New Query</a>
+  </div>
+
+ 
+  <div ng-if="dashboard.queries.length===0" >
+    <div  id="noquery">
+			<div >
+				<br><br>
+				<!-- Filter Buttons -->
+				<button class="btn "  ng-click="dashboard.open()" style="padding-left: 6%;padding-right: 6%;background-color:#139359 ; color: #d3e2db;><i class="fa fa-envelope-open-o" aria-hidden="true" ></i>    Open Queries</button>
+			
+				<button class="btn  " ng-click="dashboard.close()" style="padding-left: 6%;padding-right: 6%; background-color:#139359 ; color: #d3e2db;"><i class="fa fa-times-circle-o" aria-hidden="true" ></i>    Closed Queries</button>
+				<br>
+				<br><br>
+				<button class="btn  " style="padding-left: 6%;padding-right: 6%;background-color:#139359 ; color: #d3e2db" ng-click="dashboard.all()"><i class="fa fa-reply-all" aria-hidden="true"></i>    All Queries</button>
+				<br>
+				<br>
+			</div>
+			<br><br>
+      <p class="text-center" style="color: white;font-size: 1.3em;">Till now no queries are posted,You can post a query now. </p>
+    </div>
+  </div>
+
+
+  <div ng-if="dashboard.queries.length>0" class="container">
+    <!-- filter box -->
+		<br>
+    <input class="form-control" id="filter" class="col-md-10" type="search" ng-model="search.$" placeholder="Filter Queries..." aria-label="Filter Queries" />
+
+    <div class="">
+      <br>
+      <!-- Filter Buttons -->
+      <button class="btn col-md-3 " " style="padding-left: 6%;padding-right: 6%;background-color:
+#139359 ; color: #d3e2db" ng-click="dashboard.open()"><i class="fa fa-envelope-open-o" aria-hidden="true"></i>   Open Queries</button>
+      
+      <button class="btn col-md-5 " style="padding-left: 6%;padding-right: 6%;background-color:
+#139359 ; color: #d3e2db"  ng-click="dashboard.close()"><i class="fa fa-times-circle-o" aria-hidden="true"></i>      Closed Queries</button>
+         
+      <button class="btn col-md-4" style="padding-left: 6%;padding-right: 6%;background-color:
+#139359 ; color: #d3e2db"  ng-click="dashboard.all()"><i class="fa fa-reply-all" aria-hidden="true"></i>    All Queries</button>
+      <br>
+			<br>
+    </div>
+	<!--query  -->
+	<div ng-repeat="query in dashboard.queries| filter: search :strict">
+	
+	  <div  class="  well well-sm" ng-class="{cardBodyfirst: $first}">
+			<div  style="color:  #f44242;">
+				<div class = "panel-heading" >
+	        <mark>Title:</mark>                      {{query.title}}
+				</div>
+				<div class = "panel-body">
+					<mark>Details:</mark>                {{query.details}}
+	      </div>
+	       <!-- panel footer-->
+	    <div  class="panel-footer">
+				<div class="center-block">
+		      <a ng-click="dashboard.deleteQuery(query.ticketNumber , $index)" class="btn btn-danger btn-sm">
+				  <span class="glyphicon glyphicon-trash" aria-hidden="true" ></span>    Delete</a>
+					<a class="btn  btn-primary btn-sm" href="#/query/{{query.ticketNumber}}">  <span class="glyphicon glyphicon-ok"></span>    View Query</a>
+	      <a class="btn  btn-success btn-sm" ng-click="dashboard.openclose(query.ticketNumber)">{{dashboard.getStatus($index)}}</a>
+	    </div>
+		</div>
+		</div>
+		</div>
+	</div>
+</div>
+	<!-- query card end -->
+</div>
+<script type='text/javascript'>
+
+(function()
+{
+  if( window.localStorage )
+  {
+    if( !localStorage.getItem('firstLoad') )
+    {
+      localStorage['firstLoad'] = true;
+      window.location.reload();
+    }
+    else
+      localStorage.removeItem('firstLoad');
+  }
+})();
+
+</script>
+</section>

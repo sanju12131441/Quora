@@ -1,0 +1,22 @@
+
+
+                <section  class="text-center" style="  background-image: url('../img/header-bg.jpg');">
+                <form class="createform" id="form1" name="createForm" class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10" >
+                <br><br>
+              <p  style="color: white;font-size: 2em;">{{create.heading}}</p>
+                <br><br>
+                        <fieldset class="clearfix">
+                                <label>Title:    </label>
+                                <input style="width: 20%; " submit-required="true" type="text" required="true" name="title" ng-model="create.queryTitle" placeholder="Title of your query"><br><br>
+                                <label>Data:</label>
+                                <textarea style="width: 19%;" submit-required="true" type="text" name="datails" ng-model="create.queryDetails" placeholder="Enter Details" required="true"></textarea>
+                                <br>
+                               
+                                <button ng-disabled = "createForm.$invalid" type="submit" ng-click="create.skipFile()" class="btn " style="padding-left: 6%;padding-right: 6%;background-color:#139359 ; color: #d3e2db" >Post your query</button>
+                        </fieldset>
+
+                </form>
+
+             
+
+        </section>

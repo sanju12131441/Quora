@@ -1,0 +1,112 @@
+<header>
+        <div class="container" >
+            <div class="intro-text">
+           
+                <div class="intro-lead-in">Welcome To Our World full of answers</div>
+                <div class="intro-heading">It's Nice To Meet You</div>
+                <a  class="btn btn-primary get-quote" data-toggle="modal" data-target="#loginModal" ng-click="home.sign=1"  id="joinus"><b><i class="fa fa-user-plus" aria-hidden="true"></i>     Sign Up / Login</b></a><br><br>
+                  <a href="#/#features" <i class="fa fa-arrow-circle-down fa-th-large text-center" style="padding-top: 150px; " aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </header>
+
+              
+           
+            <div class="row text-center" id="features" style="background-image:url(https://s-media-cache-ak0.pinimg.com/originals/b3/fc/78/b3fc782c37bdb1d2561564fc28a07e4d.jpg);">
+            <div class="text-center" >
+                    <br> <br> 
+                    <h3 style="color:#308e70; font-style: italic;"> Why Millions of people love Quora? </h3>
+                </div> <br> <br>
+                <div class="col-md-12 ">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-default"></i>
+                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Guaranteed Response</h4>
+                    <p class="text-muted">1 million + users<br>Very Responsive and Concernable</p>
+
+                </div> <br> <br>
+                <div class="col-md-12">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-default"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">User experience</h4>
+                    <p class="text-muted">By now you might have understood and enjoyin our ui and ux</p>
+                </div> <br> <br>
+                <div class="col-md-12">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-default"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Security</h4>
+                    <p class="text-muted">Your Details are 100% secure and we can prove it </p>
+                </div>
+            </div><hr>
+        
+
+   
+          
+
+    <!-- Contact Section -->
+   
+<!--Login/Signup Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login/Signup Form">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row">
+            <button type="button" id="signupform"  class="col-lg-6 col-md-6 col-sm-6 col-xs-6 modal-title btn btn-danger navbar-btn" ng-click='home.sign=1;home.log=0' ><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</button>
+            <button class="col-lg-6 col-md-6 col-sm-6 col-xs-6 modal-title btn btn-info navbar-btn" id="Loginform" ng-click="home.log=1 ;home.sign=0" type="button" ><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button>
+        </div>
+      </div>
+      <div class="modal-body" id="signup" ng-if="home.sign===1">
+        <form ng-submit="home.submitSign()">
+         
+                 <p style="color: #f44242;" class="text-center">Fill in your details</p>
+        
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" required="true" class="form-control login" name="name" ng-model="home.name" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <label for="mobile number">Mobile Number</label>
+                <input type="number" required="true" class="form-control login" ng-model="home.mobileNum" name="mobileNum" placeholder="Mobile Number ">
+              </div>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" required="true" name="email" class="form-control login" ng-model="home.email" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" required="true" class="form-control login" ng-model="home.pass" name="pass" placeholder="Password">
+              </div>
+
+          <button type="submit" class="btn  " style="padding-left: 40%;padding-right: 50%;background-color:
+#024427; color: #d3e2db">Submit</button>
+        </form>
+      </div>
+      <div class="modal-body" ng-if="home.log===1" id="login">
+        <form ng-submit="home.submitLog()">
+          
+            
+                  <p style="color: #f44242;" class="text-center">Login Details</p>
+              
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" name="email" ng-model="home.email" class="form-control login" placeholder="Email" required="true">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control login" ng-model="home.pass" name="pass" placeholder="Password" required="true">
+              </div>
+          </fieldset>
+          <div class="text-center"><button type="submit" class="btn " style="padding-left: 40%;padding-right: 50%;background-color:#024427; color: #d3e2db">Login</button></div>
+        </form>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-primary" id="closebtn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
